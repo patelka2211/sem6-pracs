@@ -54,7 +54,7 @@ let input = "Lorem Ipsum",
     key = 10;
 console.log(`\nOriginal text: ${input}`);
 console.log(
-    `\nCipher text when key is 10: ${caesar_cipher.encrypt(input, key)}`
+    `\nCipher text when key is ${key}: ${caesar_cipher.encrypt(input, key)}`
 );
 console.log(
     `\nCipher text of ROT-13 cipher: ${caesar_cipher.ROT13.encrypt(input)}`
