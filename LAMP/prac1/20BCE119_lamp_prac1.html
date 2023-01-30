@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        .heading {
+            margin: 0;
+            padding: 10px;
+            color: navy;
+            font-size: 2rem;
+            height: 150px;
+            width: 100%;
+            background-color: lightblue;
+            text-align: center;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        h4 {
+            margin: 0%;
+            padding: 0%;
+        }
+
+        .nameoffield {
+            margin: 0%;
+            width: 42%;
+            padding: 1%;
+            padding-top: 3%;
+            height: 30px;
+            background-color: lightblue;
+        }
+
+        .value {
+            height: 30px;
+            width: 100%;
+            margin: 1%;
+        }
+
+        .field {
+            /* text-align: center; */
+            margin: 1%;
+            border: solid 2px black;
+            width: 50%;
+            display: flex;
+        }
+
+        .formstyle {
+            margin-top: 5%;
+            margin-left: 5%;
+            width: 90%;
+        }
+
+        .btn {
+            margin: 1%;
+            margin-top: 3%;
+            font-size: 1.2rem;
+            border-radius: 10%;
+            background-color: white;
+            border-color: navy;
+            color: navy;
+        }
+
+        .btn:hover {
+            color: white;
+            background-color: navy;
+        }
+
+        .below {
+            margin: 5% 1%;
+        }
+
+        .text {
+            margin: 3% 0%;
+        }
+    </style>
+    <script defer src="./index.js"></script>
+</head>
+
+<body>
+    <div class="heading">
+        <h1>Student registration form</h1>
+    </div>
+    <div class="formstyle">
+        <!-- <form> -->
+        <div class="field">
+            <h4 class="nameoffield">NAME </h4>
+            <input class="value" type="text" id="name" required>
+        </div>
+        <div class="field">
+            <h4 class="nameoffield">PHONE NO </h4>
+            <input class="value" type="text" id="phoneno" required>
+        </div>
+        <div class="field">
+            <h4 class="nameoffield">EMAIL ID </h4>
+            <input class="value" type="text" id="emailid" required>
+        </div>
+        <div class="field">
+            <h4 class="nameoffield">Password </h4>
+            <input class="value" type="password" id="password" required>
+        </div>
+        <div class="field">
+            <h4 class="nameoffield">Re-enter password </h4>
+            <input class="value" type="password" id="reenter-password" required>
+        </div>
+        <button id="submit-btn" class="btn">SUBMIT</button>
+        <!-- type="submit" -->
+        <!-- </form> -->
+    </div>
+</body>
+
+</html>
