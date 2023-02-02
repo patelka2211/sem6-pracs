@@ -1,5 +1,18 @@
+# INS Practical 1
+
+Date: **02-02-2023**
+
+Roll no.: **20BCE119**
+
+Name: **Kartavya Patel**
+
+Course Code and Name: 2CSDE54 **Information and Network Security**
+
+# Task
+
+-   Implementation and crypt-analysis of shift-based ciphers- Caesar Cipher, ROT-13 cipher)
+
 ```js
-"use strict";
 const caesar_cipher = {
     validate_character: (input) => {
         if (input.length == 1) {
@@ -66,3 +79,7 @@ console.log(
     )}`
 );
 ```
+
+# Output
+
+![](ins1.png)
