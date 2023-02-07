@@ -1,3 +1,19 @@
+Date: **7-2-2023**
+
+Roll no. and Name: **20BCE119 Kartavya Patel**
+
+Course code and Name: **2CSDE69 LAMP**
+
+Practical No: **2**
+
+Task
+
+1.  Check if the given number is Harshad number or not.
+1.  Check if the given number is Special number or not.
+1.  Check if the given number is Kaprekar number or not.
+1.  Check if the given number is Automorphic number or not.
+
+```php
 <!DOCTYPE html>
 <html lang="en">
 
@@ -116,3 +132,8 @@
 </body>
 
 </html>
+```
+
+## Output
+
+![](/Users/kp/Documents/GitHub/sem6-pracs/LAMP/prac2/images/prac2out.png)
