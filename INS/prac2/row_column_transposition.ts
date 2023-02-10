@@ -1,49 +1,56 @@
-const cleanPlaintext = (pt: string) => {
+function cleanPlaintext(pt: string) {
     return pt.split(" ").join("").toUpperCase();
-};
+}
 
-const pt = cleanPlaintext("Information and Network Security"),
-    encryptionKey: number = 45321;
-
-const encryption = (pt: string, encryptionKey: number) => {
+function encryption(pt: string, encryptionKey: number) {
+    pt = cleanPlaintext(pt);
     let key = encryptionKey.toString(),
         cols = key.length,
         rows = Math.ceil(pt.length / cols),
         extras = rows * cols - pt.length - 1,
-        matrix: string[][] = [];
+        matrix: { [_: string]: string } = {},
+        encrypted = "";
 
-    for (let outerIndex = 0; outerIndex < rows; outerIndex++) {
-        matrix.push([]);
-        for (let innerIndex = 0; innerIndex < cols; innerIndex++) {
-            ((input) => {
-                if (input === undefined) {
-                    matrix[outerIndex].push(String.fromCharCode(90 - extras));
-                    extras--;
-                } else matrix[outerIndex].push(input);
-            })(pt[cols * outerIndex + innerIndex]);
+    if (cols <= 1) throw Error("Key must be of at least 2 digit.");
+
+    for (let index = 0; index < rows * cols; index++) {
+        if (matrix[key[index % cols]] === undefined) {
+            matrix[key[index % cols]] = "";
+        }
+        if (pt[index] === undefined) {
+            matrix[key[index % cols]] += String.fromCharCode(90 - extras);
+            extras--;
+        } else {
+            matrix[key[index % cols]] += pt[index];
         }
     }
 
-    let outputList: { [_: string]: string } = {},
-        couter = 0;
-    [...key].forEach((index) => {
-        let col = Number(index) - 1;
+    Object.keys(matrix).forEach((element) => {
+        encrypted += matrix[element];
+    });
 
-        outputList[couter] = "";
-        for (let row = 0; row < rows; row++) {
-            outputList[couter] += matrix[row][col];
+    return encrypted;
+}
+
+function decrypt(ct: string, encryptionKey: number) {
+    let key = encryptionKey.toString(),
+        cols = key.length,
+        rows = ct.length / cols,
+        decrypted = "";
+
+    if (cols <= 1) throw Error("Key must be of at least 2 digit.");
+
+    for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
+            decrypted += ct[(Number(key[col]) - 1) * rows + row];
         }
+    }
 
-        couter++;
-    });
+    return decrypted;
+}
 
-    let output: string = "";
-
-    Object.keys(outputList).forEach((key) => {
-        output += outputList[key];
-    });
-
-    return output;
-};
+const pt = "Information and Network Security",
+    encryptionKey: number = 35142;
 
 console.log(encryption(pt, encryptionKey));
+console.log(decrypt(encryption(pt, encryptionKey), encryptionKey));
