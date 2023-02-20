@@ -1,17 +1,19 @@
-Date: **7-2-2023**
+# LAMP Practical 2
 
-Roll no. and Name: **20BCE119 Kartavya Patel**
+Date: **07-02-2023**
 
-Course code and Name: **2CSDE69 LAMP**
+Roll no.: **20BCE119**
 
-Practical No: **2**
+Name: **Kartavya Patel**
 
-Task
+Course Code and Name: 2CSDE69 **LAMP Technologies**
 
-1.  Check if the given number is Harshad number or not.
-1.  Check if the given number is Special number or not.
-1.  Check if the given number is Kaprekar number or not.
-1.  Check if the given number is Automorphic number or not.
+# Task
+
+-   Check if the given number is Harshad number or not.
+-   Check if the given number is Special number or not.
+-   Check if the given number is Kaprekar number or not.
+-   Check if the given number is Automorphic number or not.
 
 ```php
 <!DOCTYPE html>
@@ -134,6 +136,6 @@ Task
 </html>
 ```
 
-## Output
+# Output
 
-![](/Users/kp/Documents/GitHub/sem6-pracs/LAMP/prac2/images/prac2out.png)
+![](./images/prac2out.png)
