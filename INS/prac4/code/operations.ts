@@ -6,7 +6,7 @@ export function get_binary(value: number, min_size: number) {
     return binary_rep.reverse().join("");
 }
 
-function xor_operation(a: number, b: number) {
+export function xor_operation(a: number, b: number) {
     return a ^ b;
 }
 

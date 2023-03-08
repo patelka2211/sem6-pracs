@@ -4,7 +4,7 @@ export function get_binary(value, min_size) {
         binary_rep.push("0");
     return binary_rep.reverse().join("");
 }
-function xor_operation(a, b) {
+export function xor_operation(a, b) {
     return a ^ b;
 }
 export function circular_left_shift(num, shift_amount, size_of_shift_register) {

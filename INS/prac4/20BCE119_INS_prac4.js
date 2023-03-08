@@ -1,4 +1,23 @@
-import { circular_left_shift, get_binary, xor_operation } from "./operations";
+'use strict';
+
+var readline = require('readline');
+
+function get_binary(value, min_size) {
+    let binary_rep = value.toString(2).split("").reverse();
+    while (binary_rep.length < min_size)
+        binary_rep.push("0");
+    return binary_rep.reverse().join("");
+}
+function xor_operation(a, b) {
+    return a ^ b;
+}
+function circular_left_shift(num, shift_amount, size_of_shift_register) {
+    let binary_rep = get_binary(num, size_of_shift_register);
+    shift_amount = shift_amount % size_of_shift_register;
+    return parseInt(binary_rep.substring(shift_amount) +
+        binary_rep.substring(0, shift_amount), 2);
+}
+
 let plaintext_block_size = 8, key_size = 10, no_of_rounds = 2, subkey_initial_permutation = [3, 5, 2, 7, 4, 10, 1, 9, 8, 6], subkey_compression_permutation = [6, 3, 7, 4, 8, 5, 10, 9], plaintext_initial_permutation = [2, 6, 3, 1, 4, 8, 5, 7], plaintext_expansion_permutation = [4, 1, 2, 3, 2, 3, 4, 1], key_shift_values = [1, 2], substitution_box_0 = [
     [1, 0, 3, 2],
     [3, 2, 1, 0],
@@ -100,4 +119,67 @@ function decrypt(ciphertext, keys) {
     });
     return plaintext;
 }
-export { key_size, generate_subkeys, encrypt, decrypt };
+
+let plaintext, key;
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
+function askToContinue() {
+    rl.question("\nYou want to continue? (Y/N): ", (answer) => {
+        if (answer === "y" || answer === "Y") {
+            askPlaintext();
+        }
+        else if (answer === "n" || answer === "N") {
+            console.clear();
+            rl.close();
+        }
+        else {
+            console.log("\nPlease enter Y or N only.");
+            askToContinue();
+        }
+    });
+}
+function askKey() {
+    rl.question("\nEnter key: ", (answer) => {
+        ((max_range) => {
+            try {
+                key = Math.floor(Number(answer));
+                if (key < 0 || key > max_range || isNaN(key)) {
+                    console.clear();
+                    console.log(`\nKey must be from ${0} to ${max_range}`);
+                    askKey();
+                    return;
+                }
+                console.clear();
+                // console.log(`Lenght of text: ${plaintext.length}`);
+                // console.log("Encrypting...");
+                let ciphertext_hex = [], subkeys = generate_subkeys(key), ciphertext = encrypt(plaintext, subkeys);
+                ciphertext.forEach((item) => {
+                    ciphertext_hex.push(parseInt(item, 2).toString(16));
+                });
+                console.log(`\nCiphertext: ${ciphertext_hex.join(" ")}`);
+                ciphertext = ciphertext.join("");
+                console.log(`\n${ciphertext}`);
+                // console.log("Decrypting...");
+                subkeys.reverse();
+                plaintext = decrypt(ciphertext, subkeys).join("");
+                console.log(`\nDecrypted plaintext: ${plaintext}`);
+                askToContinue();
+            }
+            catch (error) {
+                console.clear();
+                console.log(`\nKey must be from ${0} to ${max_range}`);
+                askKey();
+            }
+        })(2 ** key_size - 1);
+    });
+}
+function askPlaintext() {
+    console.clear();
+    rl.question("\nEnter plaintext: ", (answer) => {
+        plaintext = answer;
+        askKey();
+    });
+}
+askPlaintext();

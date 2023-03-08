@@ -1,4 +1,3 @@
-"use strict";
 const caesar_cipher = {
     validate_character: (input) => {
         if (input.length == 1) {
@@ -50,3 +49,4 @@ console.log(`\nOriginal text: ${input}`);
 console.log(`\nCipher text when key is ${key}: ${caesar_cipher.encrypt(input, key)}`);
 console.log(`\nCipher text of ROT-13 cipher: ${caesar_cipher.ROT13.encrypt(input)}`);
 console.log(`\nDecrypted back to original text: ${caesar_cipher.decrypt(caesar_cipher.encrypt(input, key), key)}`);
+export {};

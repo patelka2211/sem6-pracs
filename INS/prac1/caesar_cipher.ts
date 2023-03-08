@@ -76,3 +76,5 @@ console.log(
         key
     )}`
 );
+
+export {};

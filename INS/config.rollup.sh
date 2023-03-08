@@ -1,0 +1,1 @@
+rollup $1 --format cjs --file $2 --watch
